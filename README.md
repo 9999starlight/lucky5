@@ -1,6 +1,7 @@
 # lucky5
 
 Lottery based game
+
 Used Technologies: HTML5, SASS/SCSS, javaScript
 
 Game interface has 2 themes - Dark (default) and Light so player can choose between them.
