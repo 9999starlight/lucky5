@@ -14,6 +14,28 @@ $orangeGradient: linear-gradient(-60deg, #ff5858 0%, #f09819 100%);
   -webkit-text-fill-color: transparent;
 }
 
+/* @mixin linearGradient($top, $bottom){
+    background: linear-gradient(to bottom,  $top 0%,$bottom 100%);
+} */
+
+@mixin boxSize($width: false, $height: false, $maxWidth: false, $maxHeight: false, $minHeight: false) {
+  @if($width) {
+    width: $width;
+  }
+  @if($height) {
+    height: $height;
+  }
+  @if($maxWidth) {
+    max-width: $maxWidth;
+  }
+  @if($maxHeight) {
+    max-height: $maxHeight;
+  }
+  @if($minHeight) {
+    min-height: $minHeight;
+  }
+}
+
 @for $i from 1 through 5 {
   .light.w#{$i} {
     background-color: darken($orange, $i*5%);

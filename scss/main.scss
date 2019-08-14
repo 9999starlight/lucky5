@@ -26,8 +26,7 @@ body {
 }
 
 .container {
-  width: 100%;
-  min-height: 100vh;
+  @include boxSize($width: 100%, $minHeight: 100vh);
   @include alignment($display: grid, $justifyGrid: center, $align: center);
   grid-template-areas:
     'header'
@@ -40,8 +39,8 @@ body {
 
 .mainHeader {
   @include alignment($align: center, $justify: space-between);
+  @include boxSize($width: 95%);
   grid-area: header;
-  width: 95%;
 
   h2 {
     font-family: 'Monoton', cursive;
@@ -51,11 +50,10 @@ body {
   }
 
   .switchWrapper {
-    width: 40%;
+    @include boxSize($width: 40%);
 
     .switch {
-      width: 50%;
-      height: 1.7rem;
+      @include boxSize($width: 50%, $height: 1.7rem);
       cursor: pointer;
 
       &:hover {
@@ -79,7 +77,7 @@ body {
   @include alignment($display: grid, $justifyGrid: center);
   grid-template-columns: repeat(6, 1fr);
   grid-area: drawnNumbers;
-  min-height: 80px;
+  @include boxSize($minHeight: 80px);
 
   .drawnNumber {
     filter: brightness(180%);
@@ -87,8 +85,7 @@ body {
 }
 
 .panel {
-  @include alignment($display: grid);
-  justify-items: center;
+  @include alignment($display: grid, $justifyGrid: center);
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 1fr 1fr;
   grid-template-areas:
@@ -111,7 +108,7 @@ body {
     }
 
     .panelInput {
-      width: 30%;
+      @include boxSize($width: 30%);
     }
 
     &.wins {
@@ -149,7 +146,7 @@ body {
         appearance: textfield;
         font-weight: bold;
         text-align: center;
-        width: 50%;
+        @include boxSize($width: 50%);
       }
 
       input[type=number]::-webkit-inner-spin-button,
@@ -188,7 +185,7 @@ body {
   grid-template-areas:
     'ticketHeader'
     'ticketsList';
-  min-height: 180px;
+  @include boxSize($minHeight: 180px);
 
   .ticketHeader {
     grid-area: ticketHeader;
@@ -208,21 +205,20 @@ body {
 
     .oneTicket {
       @include alignment($justify: space-between, $align: center);
-      width: 100%;
+      @include boxSize($width: 100%);
       font-weight: 900;
       border-top: 1px inset #3acfd5;
       padding: 0.2rem 0.8rem;
 
       .oneTicketNumbers {
         @include alignment($align: center, $justify: flex-start);
-        width: 100%;
+        @include boxSize($width: 100%);
       }
     }
   }
 
   .ticketNumber {
-    height: 20px;
-    width: 20px;
+    @include boxSize($width: 20px, $height: 20px);
     border-radius: 50%;
     margin: 0 3%;
     padding: 0.5rem;
