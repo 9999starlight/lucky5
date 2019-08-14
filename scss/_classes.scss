@@ -1,0 +1,190 @@
+.wrapper {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.541);
+  width: 95%;
+  padding: 2%;
+
+  &.dark {
+    background: linear-gradient(to bottom right, #000000d4 0%, rgba(33, 21, 43, 0.82) 51%, #000000cf 100%);
+  }
+}
+
+.flex {
+  display: flex;
+}
+
+.center {
+  @include alignment($align: center, $justify: center, $direction: column);
+}
+
+.hide {
+  display: none;
+}
+
+.block {
+  display: block;
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.overlay {
+  z-index: 2;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.numberDiv {
+  cursor: pointer;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  margin: 1%;
+  text-align: center;
+  font-family: 'Lobster Two', cursive;
+  color: rgb(231, 231, 181);
+  //background: radial-gradient(ellipse at top left, rgba(244, 239, 247, 0.96) 0%, rgba(116, 9, 170, 0.96) 52%, rgb(89, 10, 113) 100%);
+  background: radial-gradient(ellipse at top left, rgba(244, 239, 247, 0.96) 0%, rgba(30, 6, 129, 0.92) 52%, #410952c2 100%);
+  box-shadow: inset 0px 0px 10px 4px rgba(3, 8, 74, 0.84);
+  text-shadow: #17171a 1px 1px 0;
+}
+
+.disable {
+  filter: brightness(30%);
+}
+
+.numberHit {
+  background: linear-gradient(0deg, #106115 0%, #16a01a 50%, #053d07 100%);
+}
+
+.ticketHit {
+  background: linear-gradient(0deg, #10611596 0%, #16a01ba6 50%, #19d91f94 100%);
+}
+
+.ticketMissed {
+  background: linear-gradient(0deg, #84151573 0%, #9f0b1787 47%, rgba(255, 0, 0, 0.63) 100%);
+}
+
+// buttons
+.btn {
+  align-self: center;
+  width: 100%;
+  padding: 6% 5%;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-shadow: #17171a 1px 1px 0;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 15px 0 rgba(0, 0, 0, 0.541);
+
+  &:hover {
+    filter: brightness(70%);
+  }
+
+  &.add {
+    grid-area: btn;
+    background-color: #08AEEA;
+    background: linear-gradient(180deg, #21D4FD 0%, #326ab8 55%, #1f5bb2 100%);
+  }
+
+  &.play {
+    grid-area: btn;
+    background-color: #ec7a12;
+    background: linear-gradient(180deg, #e4720c 0%, #e65705 50%, #f07607 100%);
+    letter-spacing: 0.2rem;
+    animation: puff-in 1s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
+  }
+
+  &.help {
+    font-size: 2em;
+    grid-area: help;
+    text-shadow: 1px 1px #0000002b;
+    @include clip(linear-gradient(to top, #30cfd0 0%, #330867 100%));
+    box-shadow: none;
+  }
+}
+
+// popups
+.popup {
+  @include alignment($direction: column, $justify: flex-start);
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  position: fixed;
+  width: 90vw;
+  max-height: 95vh;
+  border: 2px inset whitesmoke;
+  z-index: 3;
+  overflow: auto;
+  background: linear-gradient(to bottom right, #292b44 0%, #28254d 51%, #14142a 100%);
+  border-radius: 30px 0px 30px 0px;
+  animation-name: fadein;
+  animation-duration: 1s;
+
+  .popupHeader {
+    @include alignment($justify: flex-end, $align: center);
+    padding: 1% 2%;
+    width: 100%;
+    background: rgb(97, 96, 96);
+    border-radius: 0;
+
+    i {
+      cursor: pointer;
+      font-size: 1.4rem;
+      color: #2e1c3d;
+
+      &:hover {
+        filter: brightness(40%);
+      }
+    }
+  }
+
+  &.rules {
+    .rulesText {
+      padding: 1rem;
+
+      h2 {
+        margin-bottom: 1rem;
+      }
+    }
+  }
+
+  &.alert {
+    max-width: 350px;
+    height: 200px;
+    background: linear-gradient(0deg, #4c0505 0%, #920410 47%, #6F0303 100%);
+    border-radius: 8px;
+
+    .text {
+      text-align: center;
+      height: 100%;
+      padding: 0 0.5rem;
+    }
+
+    i {
+      color: #9f0b17;
+    }
+  }
+
+  &.resultsPopup {
+    @include alignment($align: center);
+
+    .resultBody {
+      padding: 1rem;
+
+      .mb1 {
+        margin-bottom: 1rem;
+      }
+    }
+  }
+}
+
+// animation classes 
+/* .bounce {
+  animation: bounce-in-top 0.5s;
+} */

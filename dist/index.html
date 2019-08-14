@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://kit.fontawesome.com/08b073957b.js"></script>
+    <link rel="stylesheet" href="./css/main.css" />
+    <title>Lottery</title>
+  </head>
+  <body class="dark">
+    <div class="container center">
+      <div class="overlay hide"></div>
+      <header class="mainHeader flex">
+        <h2>Lucky 5</h2>
+        <div class="switchWrapper flex">
+          <div id="dark" class="switch dark flex center">dark</div>
+          <div id="light" class="switch light flex center">light</div>
+        </div>
+      </header>
+      <div class="drawnNumbers wrapper w1 dark"></div>
+      <div class="panel wrapper w2 dark">
+        <div class="inputWrapper bets flex">
+          <label for="calculateBets"><i class="fas fa-donate"></i></label>
+          <input
+            type="text"
+            id="calculateBets"
+            class="panelInput"
+            value="0"
+            readonly
+          />
+        </div>
+        <div class="inputWrapper wins flex">
+          <label for="calculateWins"
+            ><i class="fas fa-hand-holding-usd"></i
+          ></label>
+          <input
+            type="text"
+            id="calculateWins"
+            class="panelInput"
+            value="0"
+            readonly
+          />
+        </div>
+        <div class="inputWrapper total flex">
+          <label for="calculateTotal"
+            ><i class="fas fa-balance-scale"></i
+          ></label>
+          <input
+            type="text"
+            id="calculateTotal"
+            class="panelInput"
+            value="0"
+            readonly
+          />
+        </div>
+        <div class="inputWrapper betInput flex">
+          <i class="fas fa-caret-left" id="decrease"></i>
+          <input
+            type="number"
+            id="betValue"
+            class="panelInput"
+            value="1"
+            min="1"
+            max="100"
+          />
+          <i class="fas fa-caret-right" id="increase"></i>
+        </div>
+        <button id="addBtn" class="btn add">add ticket</button>
+        <button id="playBtn" class="btn play hide">Play</button>
+        <i id="rules" class="fas fa-info-circle btn help flex center"></i>
+      </div>
+      <div class="numbersSelection wrapper w3 dark"></div>
+      <div class="ticketsContainer wrapper w4 dark">
+        <header class="ticketHeader flex">
+          <i class="fas fa-list-ul"></i>
+          <h5>Tickets</h5>
+          <i class="fas fa-coins"></i>
+        </header>
+        <div class="ticketsList flex"></div>
+      </div>
+    </div>
+    <div class="resultsPopup popup hide center">
+      <div class="popupHeader flex">
+        <i class="fas fa-times block" id="resultPopup"></i>
+      </div>
+      <div class="resultBody"></div>
+    </div>
+    <div class="rules popup hide">
+      <div class="popupHeader flex"><i class="fas fa-times block"></i></div>
+      <div class="rulesText">
+        <h2>Game Rules</h2>
+        <p>
+          &#9734; Choose 1 to 5 numbers between 1 and 30 for one ticket and
+          enter bet value for ticket between 1 and 100.
+        </p>
+        <p>&#9734; Click on ADD TICKET button to submit ticket.</p>
+        <p>&#9734; You need to submit 5 tickets.</p>
+        <p>
+          &#9734; With 5 tickets submited click on PLAY button to run numbers
+          draw.
+        </p>
+        <p>
+          &#9734; After numbers has been drawn you will be able to see result -
+          winning tickets will be colored green, the rest red.
+        </p>
+        <p>
+          &#9734; On the control panel you can see your overall balance - amount
+          you have spent, won and total.
+        </p>
+        <p>&#9734; Enjoy and have fun!</p>
+      </div>
+    </div>
+    <div class="alert popup hide">
+      <div class="popupHeader flex"><i class="fas fa-times block"></i></div>
+      <div class="text flex center">
+        <h4 class="alertText"></h4>
+      </div>
+    </div>
+    <script src="./scripts/ui.js"></script>
+    <script src="./scripts/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,427 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat|Lobster+Two|Monoton&display=swap");
+.light.w1 {
+  background-color: rgba(254, 140, 10, 0.501961); }
+
+.light.w2 {
+  background-color: rgba(237, 127, 1, 0.501961); }
+
+.light.w3 {
+  background-color: rgba(212, 113, 1, 0.501961); }
+
+.light.w4 {
+  background-color: rgba(186, 100, 1, 0.501961); }
+
+.light.w5 {
+  background-color: rgba(161, 86, 1, 0.501961); }
+
+.wrapper {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.541);
+  width: 95%;
+  padding: 2%; }
+  .wrapper.dark {
+    background: linear-gradient(to bottom right, #000000d4 0%, rgba(33, 21, 43, 0.82) 51%, #000000cf 100%); }
+
+.flex {
+  display: flex; }
+
+.center {
+  align-items: center;
+  justify-content: center;
+  flex-direction: column; }
+
+.hide {
+  display: none; }
+
+.block {
+  display: block; }
+
+.fullWidth {
+  width: 100%; }
+
+.overlay {
+  z-index: 2;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; }
+
+.numberDiv {
+  cursor: pointer;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  margin: 1%;
+  text-align: center;
+  font-family: 'Lobster Two', cursive;
+  color: #e7e7b5;
+  background: radial-gradient(ellipse at top left, rgba(244, 239, 247, 0.96) 0%, rgba(30, 6, 129, 0.92) 52%, #410952c2 100%);
+  box-shadow: inset 0px 0px 10px 4px rgba(3, 8, 74, 0.84);
+  text-shadow: #17171a 1px 1px 0; }
+
+.disable {
+  filter: brightness(30%); }
+
+.numberHit {
+  background: linear-gradient(0deg, #106115 0%, #16a01a 50%, #053d07 100%); }
+
+.ticketHit {
+  background: linear-gradient(0deg, #10611596 0%, #16a01ba6 50%, #19d91f94 100%); }
+
+.ticketMissed {
+  background: linear-gradient(0deg, #84151573 0%, #9f0b1787 47%, rgba(255, 0, 0, 0.63) 100%); }
+
+.btn {
+  align-self: center;
+  width: 100%;
+  padding: 6% 5%;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-shadow: #17171a 1px 1px 0;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 15px 0 rgba(0, 0, 0, 0.541); }
+  .btn:hover {
+    filter: brightness(70%); }
+  .btn.add {
+    grid-area: btn;
+    background-color: #08AEEA;
+    background: linear-gradient(180deg, #21D4FD 0%, #326ab8 55%, #1f5bb2 100%); }
+  .btn.play {
+    grid-area: btn;
+    background-color: #ec7a12;
+    background: linear-gradient(180deg, #e4720c 0%, #e65705 50%, #f07607 100%);
+    letter-spacing: 0.2rem;
+    animation: puff-in 1s cubic-bezier(0.47, 0, 0.745, 0.715) both; }
+  .btn.help {
+    font-size: 2em;
+    grid-area: help;
+    text-shadow: 1px 1px #0000002b;
+    background: linear-gradient(to top, #30cfd0 0%, #330867 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    box-shadow: none; }
+
+.popup {
+  justify-content: flex-start;
+  flex-direction: column;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  position: fixed;
+  width: 90vw;
+  max-height: 95vh;
+  border: 2px inset whitesmoke;
+  z-index: 3;
+  overflow: auto;
+  background: linear-gradient(to bottom right, #292b44 0%, #28254d 51%, #14142a 100%);
+  border-radius: 30px 0px 30px 0px;
+  animation-name: fadein;
+  animation-duration: 1s; }
+  .popup .popupHeader {
+    align-items: center;
+    justify-content: flex-end;
+    padding: 1% 2%;
+    width: 100%;
+    background: #616060;
+    border-radius: 0; }
+    .popup .popupHeader i {
+      cursor: pointer;
+      font-size: 1.4rem;
+      color: #2e1c3d; }
+      .popup .popupHeader i:hover {
+        filter: brightness(40%); }
+  .popup.rules .rulesText {
+    padding: 1rem; }
+    .popup.rules .rulesText h2 {
+      margin-bottom: 1rem; }
+  .popup.alert {
+    max-width: 350px;
+    height: 200px;
+    background: linear-gradient(0deg, #4c0505 0%, #920410 47%, #6F0303 100%);
+    border-radius: 8px; }
+    .popup.alert .text {
+      text-align: center;
+      height: 100%;
+      padding: 0 0.5rem; }
+    .popup.alert i {
+      color: #9f0b17; }
+  .popup.resultsPopup {
+    align-items: center; }
+    .popup.resultsPopup .resultBody {
+      padding: 1rem; }
+      .popup.resultsPopup .resultBody .mb1 {
+        margin-bottom: 1rem; }
+
+/* .bounce {
+  animation: bounce-in-top 0.5s;
+} */
+@keyframes bounce-in-top {
+  0% {
+    transform: translateY(-500px);
+    animation-timing-function: ease-in;
+    opacity: 0; }
+  38% {
+    transform: translateY(0);
+    animation-timing-function: ease-out;
+    opacity: 1; }
+  55% {
+    transform: translateY(-65px);
+    animation-timing-function: ease-in; }
+  72% {
+    transform: translateY(0);
+    animation-timing-function: ease-out; }
+  81% {
+    transform: translateY(-28px);
+    animation-timing-function: ease-in; }
+  90% {
+    transform: translateY(0);
+    animation-timing-function: ease-out; }
+  95% {
+    transform: translateY(-8px);
+    animation-timing-function: ease-in; }
+  100% {
+    transform: translateY(0);
+    animation-timing-function: ease-out; } }
+
+@keyframes puff-in {
+  0% {
+    transform: scale(2);
+    opacity: 0; }
+  100% {
+    transform: scale(1);
+    opacity: 1; } }
+
+@keyframes fadein {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  transition: all 0.2s ease;
+  border-radius: 6px;
+  outline: none; }
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  color: #fff; }
+  body.dark {
+    background: linear-gradient(rgba(0, 0, 0, 0.287), rgba(0, 0, 0, 0.205)), url("../assets/abstract.png") no-repeat center center/cover; }
+  body.light {
+    background: linear-gradient(rgba(0, 0, 0, 0.287), rgba(0, 0, 0, 0.205)), url("../assets/gold2.jpg") no-repeat center center/cover; }
+
+.container {
+  width: 100%;
+  min-height: 100vh;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  grid-template-areas: 'header' 'drawnNumbers' 'numbersSelection' 'panel' 'ticketsContainer';
+  grid-gap: 0.7rem; }
+
+.mainHeader {
+  align-items: center;
+  justify-content: space-between;
+  grid-area: header;
+  width: 95%; }
+  .mainHeader h2 {
+    font-family: 'Monoton', cursive;
+    background: radial-gradient(circle at 50% 120%, #d481f6, #cb76ef 10%, #5c0594 80%, #360645 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: brightness(150%);
+    text-shadow: #17171a 1px 1px 0; }
+  .mainHeader .switchWrapper {
+    width: 40%; }
+    .mainHeader .switchWrapper .switch {
+      width: 50%;
+      height: 1.7rem;
+      cursor: pointer; }
+      .mainHeader .switchWrapper .switch:hover {
+        box-shadow: 0 0 16px 8px rgba(184, 182, 182, 0.2), 0 6px 20px 0 rgba(192, 185, 185, 0.541); }
+      .mainHeader .switchWrapper .switch.dark {
+        background: linear-gradient(to bottom right, #000000d4 0%, rgba(33, 21, 43, 0.82) 51%, #000000cf 100%);
+        border-radius: 30px 0px 0px 30px; }
+      .mainHeader .switchWrapper .switch.light {
+        background: rgba(255, 189, 0, 0.83);
+        border-radius: 0px 30px 30px 0px; }
+
+.drawnNumbers {
+  display: grid;
+  justify-items: center;
+  grid-template-columns: repeat(6, 1fr);
+  grid-area: drawnNumbers;
+  min-height: 80px; }
+  .drawnNumbers .drawnNumber {
+    filter: brightness(180%); }
+
+.panel {
+  display: grid;
+  justify-items: center;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas: 'bets win total' 'bet btn help';
+  grid-area: panel; }
+  .panel .inputWrapper {
+    align-items: center;
+    justify-content: space-evenly;
+    background: linear-gradient(rgba(0, 0, 0, 0.287), rgba(0, 0, 0, 0.205)); }
+    .panel .inputWrapper i {
+      font-size: 1.5rem; }
+    .panel .inputWrapper input {
+      background: transparent;
+      color: #fff;
+      border: none; }
+    .panel .inputWrapper .panelInput {
+      width: 30%; }
+    .panel .inputWrapper.wins {
+      grid-area: win; }
+      .panel .inputWrapper.wins .fa-hand-holding-usd {
+        background: linear-gradient(60deg, #33934b 0%, #2bb938 37%, #32d12c 65%, #14550d 100%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent; }
+    .panel .inputWrapper.bets {
+      grid-area: bets; }
+      .panel .inputWrapper.bets .fa-donate {
+        background: linear-gradient(0deg, #841515e1 0%, #9f0b17e8 47%, rgba(255, 0, 0, 0.931) 100%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent; }
+    .panel .inputWrapper.total {
+      grid-area: total; }
+      .panel .inputWrapper.total .fa-balance-scale {
+        background: linear-gradient(to right, #f8b100 0%, #f9d423 100%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent; }
+    .panel .inputWrapper.betInput {
+      grid-area: bet;
+      background: transparent;
+      justify-content: center; }
+      .panel .inputWrapper.betInput input[type="number"] {
+        -webkit-appearance: textfield;
+        -moz-appearance: textfield;
+        appearance: textfield;
+        font-weight: bold;
+        text-align: center; }
+      .panel .inputWrapper.betInput input[type=number]::-webkit-inner-spin-button,
+      .panel .inputWrapper.betInput input[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none; }
+      .panel .inputWrapper.betInput i {
+        cursor: pointer;
+        margin: 0 0.3rem; }
+        .panel .inputWrapper.betInput i:hover {
+          transform: scale(1.2);
+          color: #789171;
+          transition: 0.5s; }
+
+.numbersSelection {
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  grid-template-columns: repeat(8, 1fr);
+  grid-area: numbersSelection; }
+  .numbersSelection .numbersToPick:hover {
+    filter: brightness(200%); }
+
+.ticketsContainer {
+  grid-area: ticketsContainer;
+  display: grid;
+  justify-items: stretch;
+  grid-template-rows: 25px 155px;
+  grid-template-areas: 'ticketHeader' 'ticketsList';
+  min-height: 180px; }
+  .ticketsContainer .ticketHeader {
+    grid-area: ticketHeader;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.3rem; }
+    .ticketsContainer .ticketHeader i {
+      padding: 0.7rem; }
+  .ticketsContainer .ticketsList {
+    grid-area: ticketsList;
+    justify-content: flex-start;
+    flex-direction: column;
+    background: linear-gradient(rgba(0, 0, 0, 0.287), rgba(0, 0, 0, 0.205));
+    font-size: 0.8rem; }
+    .ticketsContainer .ticketsList .oneTicket {
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      font-weight: 900;
+      border-top: 1px inset #3acfd5;
+      padding: 0.2rem 0.8rem; }
+      .ticketsContainer .ticketsList .oneTicket .oneTicketNumbers {
+        align-items: center;
+        justify-content: flex-start;
+        width: 100%; }
+  .ticketsContainer .ticketNumber {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    margin: 0 3%;
+    padding: 0.5rem;
+    text-align: center; }
+
+@media (min-width: 500px) {
+  .rulesText {
+    line-height: 1.7; } }
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 0.5fr 1fr 3fr 1fr;
+    grid-template-areas: 'header header header header header' 'drawnNumbers drawnNumbers drawnNumbers drawnNumbers drawnNumbers' 'numbersSelection numbersSelection numbersSelection ticketsContainer ticketsContainer' 'panel panel panel panel panel';
+    padding: 2%;
+    max-height: 100vh;
+    font-size: 3vh; }
+  .wrapper {
+    height: 90%;
+    width: 100%; }
+  .drawnNumbers {
+    grid-template-columns: repeat(12, 1fr); }
+  .numbersSelection {
+    height: 100%; }
+  .ticketsContainer {
+    grid-template-rows: 12% 85%;
+    height: 100%; }
+    .ticketsContainer .ticketsList {
+      font-size: 2.5vh; }
+      .ticketsContainer .ticketsList .oneTicket {
+        padding: 0 0.8rem; }
+    .ticketsContainer .ticketNumber {
+      width: 24px;
+      height: 24px; }
+  .panel .inputWrapper input {
+    font-size: 3vh; }
+  .numberDiv {
+    width: 40px;
+    height: 40px; }
+  .popup {
+    max-width: 50vw; }
+  .btn {
+    font-size: 1.1rem;
+    padding: 4% 3%; } }
+
+@media (min-width: 992px) {
+  .numbersSelection {
+    grid-template-columns: repeat(10, 1fr); }
+  .numberDiv {
+    width: 50px;
+    height: 50px; } }
+
+@media (min-width: 1200px) {
+  .ticketsContainer .ticketNumber {
+    width: 40px;
+    height: 40px; } }

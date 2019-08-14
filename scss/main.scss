@@ -1,0 +1,232 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Lobster+Two|Monoton&display=swap');
+@import 'config';
+@import 'classes';
+@import 'keyframes';
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  transition: all 0.2s ease;
+  border-radius: 6px;
+  outline: none;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  color: #fff;
+
+  &.dark {
+    @include background($filter, url('../assets/abstract.png'), $backConfig);
+  }
+
+  &.light {
+    @include background($filter, url('../assets/gold2.jpg'), $backConfig);
+  }
+}
+
+.container {
+  width: 100%;
+  min-height: 100vh;
+  @include alignment($display: grid, $justifyGrid: center, $align: center);
+  grid-template-areas:
+    'header'
+    'drawnNumbers'
+    'numbersSelection'
+    'panel'
+    'ticketsContainer';
+  grid-gap: 0.7rem;
+}
+
+.mainHeader {
+  @include alignment($align: center, $justify: space-between);
+  grid-area: header;
+  width: 95%;
+
+  h2 {
+    font-family: 'Monoton', cursive;
+    @include clip(radial-gradient(circle at 50% 120%, #d481f6, #cb76ef 10%, #5c0594 80%, #360645 100%));
+    filter: brightness(150%);
+    text-shadow: #17171a 1px 1px 0;
+  }
+
+  .switchWrapper {
+    width: 40%;
+
+    .switch {
+      width: 50%;
+      height: 1.7rem;
+      cursor: pointer;
+
+      &:hover {
+        box-shadow: 0 0 16px 8px rgba(184, 182, 182, 0.2), 0 6px 20px 0 rgba(192, 185, 185, 0.541);
+      }
+
+      &.dark {
+        background: linear-gradient(to bottom right, #000000d4 0%, rgba(33, 21, 43, 0.82) 51%, #000000cf 100%);
+        border-radius: 30px 0px 0px 30px;
+      }
+
+      &.light {
+        background: rgba(255, 189, 0, 0.83);
+        border-radius: 0px 30px 30px 0px;
+      }
+    }
+  }
+}
+
+.drawnNumbers {
+  @include alignment($display: grid, $justifyGrid: center);
+  grid-template-columns: repeat(6, 1fr);
+  grid-area: drawnNumbers;
+  min-height: 80px;
+
+  .drawnNumber {
+    filter: brightness(180%);
+  }
+}
+
+.panel {
+  @include alignment($display: grid);
+  justify-items: center;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas:
+    'bets win total'
+    'bet btn help';
+  grid-area: panel;
+
+  .inputWrapper {
+    @include alignment($align: center, $justify: space-evenly);
+    background: $filter;
+
+    i {
+      font-size: 1.5rem;
+    }
+
+    input {
+      background: transparent;
+      color: #fff;
+      border: none;
+    }
+
+    .panelInput {
+      width: 30%;
+    }
+
+    &.wins {
+      grid-area: win;
+
+      .fa-hand-holding-usd {
+        @include clip(linear-gradient(60deg, #33934b 0%, #2bb938 37%, #32d12c 65%, #14550d 100%));
+      }
+    }
+
+    &.bets {
+      grid-area: bets;
+
+      .fa-donate {
+        @include clip(linear-gradient(0deg, #841515e1 0%, #9f0b17e8 47%, rgba(255, 0, 0, 0.931) 100%));
+      }
+    }
+
+    &.total {
+      grid-area: total;
+
+      .fa-balance-scale {
+        @include clip(linear-gradient(to right, #f8b100 0%, #f9d423 100%));
+      }
+    }
+
+    &.betInput {
+      grid-area: bet;
+      background: transparent;
+      @include alignment($justify:center);
+
+      input[type="number"] {
+        -webkit-appearance: textfield;
+        -moz-appearance: textfield;
+        appearance: textfield;
+        font-weight: bold;
+        text-align: center;
+      }
+
+      input[type=number]::-webkit-inner-spin-button,
+      input[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+      }
+
+      i {
+        cursor: pointer;
+        margin: 0 0.3rem;
+
+        &:hover {
+          transform: scale(1.2);
+          color: rgb(120, 145, 113);
+          transition: 0.5s;
+        }
+      }
+    }
+  }
+}
+
+.numbersSelection {
+  @include alignment($display: grid, $justifyGrid: center, $align: center);
+  grid-template-columns: repeat(8, 1fr);
+  grid-area: numbersSelection;
+
+  .numbersToPick:hover {
+    filter: brightness(200%);
+  }
+}
+
+.ticketsContainer {
+  grid-area: ticketsContainer;
+  @include alignment($display: grid, $justifyGrid: stretch);
+  grid-template-rows: 25px 155px;
+  grid-template-areas:
+    'ticketHeader'
+    'ticketsList';
+  min-height: 180px;
+
+  .ticketHeader {
+    grid-area: ticketHeader;
+    @include alignment($justify: space-between, $align: center);
+    margin-bottom: 0.3rem;
+
+    i {
+      padding: 0.7rem;
+    }
+  }
+
+  .ticketsList {
+    grid-area: ticketsList;
+    @include alignment($direction: column, $justify: flex-start);
+    background: $filter;
+    font-size: 0.8rem;
+
+    .oneTicket {
+      @include alignment($justify: space-between, $align: center);
+      width: 100%;
+      font-weight: 900;
+      border-top: 1px inset #3acfd5;
+      padding: 0.2rem 0.8rem;
+
+      .oneTicketNumbers {
+        @include alignment($align: center, $justify: flex-start);
+        width: 100%;
+      }
+    }
+  }
+
+  .ticketNumber {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    margin: 0 3%;
+    padding: 0.5rem;
+    text-align: center;
+  }
+}
+
+@import 'media';

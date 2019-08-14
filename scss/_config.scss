@@ -1,0 +1,43 @@
+$backConfig: no-repeat center center/cover;
+$filter: linear-gradient(rgba(0, 0, 0, 0.287), rgba(0, 0, 0, 0.205));
+$orange: #fe982380;
+$orangeGradient: linear-gradient(-60deg, #ff5858 0%, #f09819 100%);
+
+@mixin background($filter, $url, $backConfig) {
+  background: $filter, $url $backConfig;
+}
+
+@mixin clip($background) {
+  background: $background;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@for $i from 1 through 5 {
+  .light.w#{$i} {
+    background-color: darken($orange, $i*5%);
+  }
+}
+
+@mixin alignment($display: false, $align: false, $justify: false, $justifyGrid: false, $direction: false) {
+  @if $display {
+    display: $display;
+  }
+
+  @if $align {
+    align-items: $align;
+  }
+
+  @if $justify {
+    justify-content: $justify;
+  }
+
+  @if $justifyGrid {
+    justify-items: $justifyGrid;
+  }
+
+  @if $direction {
+    flex-direction: $direction;
+  }
+}
