@@ -50,6 +50,10 @@
   filter: brightness(30%);
 }
 
+.bounce {
+  animation: bounce 1.3s;
+}
+
 .numberHit {
   background: linear-gradient(0deg, #106115 0%, #16a01a 50%, #053d07 100%);
 }
@@ -91,7 +95,7 @@
     background-color: #ec7a12;
     background: linear-gradient(180deg, #e4720c 0%, #e65705 50%, #f07607 100%);
     letter-spacing: 0.2rem;
-    animation: puff-in 1s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
+    animation: flipin 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
   }
 
   &.help {
@@ -116,8 +120,7 @@
   overflow: auto;
   background: linear-gradient(to bottom right, #292b44 0%, #28254d 51%, #14142a 100%);
   border-radius: 30px 0px 30px 0px;
-  animation-name: fadein;
-  animation-duration: 1s;
+  animation: fadein 0.8s;
 
   .popupHeader {
     @include alignment($justify: flex-end, $align: center);
@@ -175,8 +178,3 @@
     }
   }
 }
-
-// animation classes 
-/* .bounce {
-  animation: bounce-in-top 0.5s;
-} */

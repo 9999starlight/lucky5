@@ -45,8 +45,8 @@ const numberIsPicked = (e) => {
 }
 
 const inputValidation = () => {
-    const betValidation = /^([1-9][0-9]?|100)$/;
-    !betValidation.test(betValue.value) ? ui.openWarn('Enter your bet between 1 and 100') : addTicketToArray();
+    const betValidation = /^(?:[1-9]|0[1-9]|1[0-9]|20)$/;
+    !betValidation.test(betValue.value) ? ui.openWarn('Enter your bet between 1 and 20') : addTicketToArray();
 }
 
 const addTicketToArray = () => {
@@ -72,10 +72,10 @@ const addTicketToArray = () => {
     oneTicket = new Ticket([], betValue.value);
 }
 
-// draw numbers; overlay on container to prevent interaction;
+// overlay to prevent interaction; draw numbers; timeout & animation class;
 const drawNumbers = () => {
     ui.playBtn.removeEventListener('click', drawNumbers);
-    ui.playBtn.classList.add('disable');
+    ui.addClass(ui.playBtn, 'disable');
     ui.toggleClasses(ui.overlay, 'hide', 'flex');
     ui.overlay.removeEventListener('click', overlayDisplay);
     ui.ticketsList.removeChild(ui.ticketsList.lastChild);
@@ -88,7 +88,14 @@ const drawNumbers = () => {
     numbersDrawn = [...setOfNumbers];
     let i = 0;
     (function displayNumbers() {
-        ui.drawnNumbersDiv.innerHTML += `<div class= "numberDiv drawnNumber flex center">${numbersDrawn[i]}</div>`;
+        ui.drawnNumbersDiv.innerHTML +=
+            `<div class= "numberDiv drawnNumber flex center">${numbersDrawn[i]}</div>`;
+        ui.addClass(document.querySelectorAll('.drawnNumber')[document.querySelectorAll('.drawnNumber').length - 1], 'bounce');
+        setTimeout(function () {
+            document.querySelectorAll('.drawnNumber').forEach(num => {
+                num.classList.remove('bounce');
+            });
+        }, 1500)
         if (++i < numbersDrawn.length)
             setTimeout(displayNumbers, 2000);
     })();

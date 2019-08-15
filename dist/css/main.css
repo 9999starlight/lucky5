@@ -62,6 +62,9 @@
 .disable {
   filter: brightness(30%); }
 
+.bounce {
+  animation: bounce 1.3s; }
+
 .numberHit {
   background: linear-gradient(0deg, #106115 0%, #16a01a 50%, #053d07 100%); }
 
@@ -94,7 +97,7 @@
     background-color: #ec7a12;
     background: linear-gradient(180deg, #e4720c 0%, #e65705 50%, #f07607 100%);
     letter-spacing: 0.2rem;
-    animation: puff-in 1s cubic-bezier(0.47, 0, 0.745, 0.715) both; }
+    animation: flipin 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both; }
   .btn.help {
     font-size: 2em;
     grid-area: help;
@@ -119,8 +122,7 @@
   overflow: auto;
   background: linear-gradient(to bottom right, #292b44 0%, #28254d 51%, #14142a 100%);
   border-radius: 30px 0px 30px 0px;
-  animation-name: fadein;
-  animation-duration: 1s; }
+  animation: fadein 0.8s; }
   .popup .popupHeader {
     align-items: center;
     justify-content: flex-end;
@@ -156,65 +158,49 @@
       .popup.resultsPopup .resultBody .mb1 {
         margin-bottom: 1rem; }
 
-/* .bounce {
-  animation: bounce-in-top 0.5s;
-} */
-/* @keyframes bounce-in-top {
+@keyframes bounce {
   0% {
     transform: translateY(-500px);
     animation-timing-function: ease-in;
-    opacity: 0;
-  }
-
+    opacity: 0; }
   38% {
     transform: translateY(0);
     animation-timing-function: ease-out;
-    opacity: 1;
-  }
-
+    opacity: 1; }
   55% {
     transform: translateY(-65px);
-    animation-timing-function: ease-in;
-  }
-
+    animation-timing-function: ease-in; }
   72% {
     transform: translateY(0);
-    animation-timing-function: ease-out;
-  }
-
+    animation-timing-function: ease-out; }
   81% {
     transform: translateY(-28px);
-    animation-timing-function: ease-in;
-  }
-
+    animation-timing-function: ease-in; }
   90% {
     transform: translateY(0);
-    animation-timing-function: ease-out;
-  }
-
+    animation-timing-function: ease-out; }
   95% {
     transform: translateY(-8px);
-    animation-timing-function: ease-in;
-  }
-
+    animation-timing-function: ease-in; }
   100% {
     transform: translateY(0);
-    animation-timing-function: ease-out;
-  }
-} */
-@keyframes puff-in {
-  0% {
-    transform: scale(2);
-    opacity: 0; }
-  100% {
-    transform: scale(1);
-    opacity: 1; } }
+    animation-timing-function: ease-out; } }
 
 @keyframes fadein {
   from {
     opacity: 0; }
   to {
     opacity: 1; } }
+
+@keyframes flipin {
+  from {
+    transform: rotateX(80deg);
+    opacity: 0;
+    box-shadow: 0 0 16px 20px rgba(247, 244, 244, 0.959), 0 0 15px 20px rgba(212, 199, 199, 0.911); }
+  to {
+    transform: rotateX(0);
+    opacity: 1;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 15px 0 rgba(0, 0, 0, 0.541); } }
 
 * {
   box-sizing: border-box;
@@ -406,7 +392,8 @@ body {
     width: 100%;
     height: 90%; }
   .drawnNumbers {
-    grid-template-columns: repeat(12, 1fr); }
+    grid-template-columns: repeat(12, 1fr);
+    align-items: center; }
   .numbersSelection {
     height: 100%; }
   .ticketsContainer {

@@ -1,4 +1,4 @@
-/* @keyframes bounce-in-top {
+@keyframes bounce {
   0% {
     transform: translateY(-500px);
     animation-timing-function: ease-in;
@@ -40,18 +40,6 @@
     transform: translateY(0);
     animation-timing-function: ease-out;
   }
-} */
-
-@keyframes puff-in {
-  0% {
-    transform: scale(2);
-    opacity: 0;
-  }
-
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
 }
 
 @keyframes fadein {
@@ -61,5 +49,19 @@
 
   to {
     opacity: 1;
+  }
+}
+
+@keyframes flipin {
+  from {
+    transform: rotateX(80deg);
+    opacity: 0;
+    box-shadow: 0 0 16px 20px rgba(247, 244, 244, 0.959), 0 0 15px 20px rgba(212, 199, 199, 0.911);
+  }
+
+  to {
+    transform: rotateX(0);
+    opacity: 1;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 15px 0 rgba(0, 0, 0, 0.541);
   }
 }

@@ -8,7 +8,7 @@ Game interface has 2 themes - Dark (default) and Light so player can choose betw
 
 Game Rules
 
-Player have to choose 1 to 5 numbers between 1 and 30 for one ticket and enter bet value for ticket between 1 and 100.
+Player have to choose 1 to 5 numbers between 1 and 30 for one ticket and enter bet value for ticket between 1 and 20.
 
 Click on ADD TICKET button to submit ticket.
 

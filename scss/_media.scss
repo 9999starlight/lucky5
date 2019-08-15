@@ -25,6 +25,7 @@
 
   .drawnNumbers {
     grid-template-columns: repeat(12, 1fr);
+    @include alignment($align: center);
   }
 
   .numbersSelection {
