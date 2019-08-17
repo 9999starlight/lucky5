@@ -29,18 +29,19 @@ const overlayDisplay = (e) => {
 class Ticket {
     constructor(numbersPlayed, bet) {
         this.numbersPlayed = [];
-        this.bet = bet;
+        this.bet = '';
     }
 }
 let oneTicket = new Ticket();
 
 // select numbers; validate bets, add & display tickets
+ui.createTicketDiv(oneTicket);
 const numberIsPicked = (e) => {
     if (oneTicket.numbersPlayed.length < 5) {
         oneTicket.numbersPlayed.push(Number(e.target.innerText));
         e.target.removeEventListener('click', numberIsPicked);
         ui.toggleClasses(e.target, 'numbersToPick', 'disable');
-        ui.appendNumber();
+        ui.appendNumber(Number(e.target.innerText));
     } else ui.openWarn('You have already added 5 numbers to one ticket. Click "add ticket" button to submit your ticket');
 }
 
@@ -57,19 +58,19 @@ const addTicketToArray = () => {
             oneTicket.bet = Number(betValue.value);
             ui.appendBet(oneTicket.bet);
             ticketsArray.push(oneTicket);
-            ui.createTicketDiv();
+            oneTicket = new Ticket([], betValue.value);
+            ui.createTicketDiv(oneTicket);
         }
     }
     ui.numbersToPick.forEach(num => {
         num.addEventListener('click', numberIsPicked);
         ui.toggleClasses(num, 'disable', 'numbersToPick');
-    })
+    });
     if (ticketsArray.length === 5) {
         ui.toggleClasses(ui.addBtn, 'block', 'hide');
         ui.toggleClasses(ui.playBtn, 'hide', 'block');
         ui.numbersToPick.forEach(num => num.removeEventListener('click', numberIsPicked));
     }
-    oneTicket = new Ticket([], betValue.value);
 }
 
 // overlay to prevent interaction; draw numbers; timeout & animation class;
@@ -102,8 +103,7 @@ const drawNumbers = () => {
     setTimeout(markWins, 25000);
 }
 
-// winning/loosing tickets & calculations;
-// mark & display results; Restart after result popup has been displayed;
+// mark, calculate & display results; Restart after result popup display;
 const markWins = () => {
     const wins = [];
     document.querySelectorAll('.ticketNumber').forEach(num => {
@@ -113,16 +113,21 @@ const markWins = () => {
         })
     })
     document.querySelectorAll('.oneTicketNumbers').forEach(ticket => {
-        if ([...ticket.children].every(child => child.classList.contains("numberHit"))) {
-            let winningTicket = Math.pow(5, ticket.childElementCount) * Number(ticket.nextSibling.innerText);
-            wins.push(winningTicket);
-            ui.addClass(ticket.parentNode, 'ticketHit');
-        } else
+        [...ticket.children].every(child => child.classList.contains("numberHit")) ?
+            ui.addClass(ticket.parentNode, 'ticketHit') :
             ui.addClass(ticket.parentNode, 'ticketMissed');
     })
+
+    let winningTicket = '';
+    for (let i = 0; i < ticketsArray.length; i++) {
+        if (ticketsArray[i].numbersPlayed.every(num => numbersDrawn.includes(num))) {
+            winningTicket = Math.pow(5, ticketsArray[i].numbersPlayed.length) * Number(ticketsArray[i].bet);
+            wins.push(winningTicket);
+        }
+    }
+    const won = wins.reduce((total, win) => total + win, 0);
     const totalBets = ticketsArray.map(ticket => ticket.bet)
         .reduce((total, bets) => total + bets, 0);
-    const won = wins.reduce((total, win) => total + win, 0);
     const total = won - totalBets;
     ui.resultDisplay(numbersDrawn.join(', '), totalBets, won, total);
     ui.calculateBets.value = Number(ui.calculateBets.value) + totalBets;
@@ -132,8 +137,7 @@ const markWins = () => {
         ui.toggleClasses(ui.overlay, 'hide', 'flex');
         ui.toggleClasses(document.querySelector('.resultsPopup'), 'hide', 'flex');
         createOnStart();
-    }, 3000)
-
+    }, 3000);
 }
 
 // increment/decrement

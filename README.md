@@ -2,7 +2,11 @@
 
 Lottery based game
 
-Used Technologies: HTML5, SASS/SCSS, javaScript
+Used Technologies: HTML5, SASS/SCSS, javaScript.
+
+Responsive - grid & flex.
+
+Optimized for Firefox, Chrome, Opera, Edge.
 
 Game interface has 2 themes - Dark (default) and Light so player can choose between them.
 

@@ -51,17 +51,14 @@ class UI {
     createTicketDiv() {
         this.ticketsList.innerHTML +=
             `<div class = "oneTicket flex">
-        <div class = "oneTicketNumbers flex"></div><div class = "bet flex"></div>
+        <div class = "oneTicketNumbers flex">${oneTicket.numbersPlayed}</div><div class = "bet flex">${oneTicket.bet}</div>
         </div>`;
     }
 
-    appendNumber() {
-        let output = '';
-        oneTicket.numbersPlayed.forEach(number => {
-            output = `<div class = "ticketNumber flex center">${number}</div>`
-        });
+    appendNumber(number) {
         const oneTicketNumbers = document.querySelectorAll('.oneTicketNumbers');
-        oneTicketNumbers[oneTicketNumbers.length - 1].innerHTML += output;
+        oneTicketNumbers[oneTicketNumbers.length - 1].innerHTML +=
+            `<div class = "ticketNumber flex center">${number}</div>`;
     }
 
     appendBet() {

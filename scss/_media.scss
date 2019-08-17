@@ -38,10 +38,10 @@
 
     .ticketsList {
       font-size: 2.5vh;
-
+/* 
       .oneTicket {
         padding: 0 0.8rem;
-      }
+      } */
     }
 
     .ticketNumber {
@@ -53,6 +53,10 @@
     .inputWrapper {
       input {
         font-size: 3vh;
+      }
+
+      i {
+        font-size: 1.5rem;
       }
     }
   }

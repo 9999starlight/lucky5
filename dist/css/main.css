@@ -22,7 +22,8 @@
   padding: 2%;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.541); }
   .wrapper.dark {
-    background: linear-gradient(to bottom right, #000000d4 0%, rgba(33, 21, 43, 0.82) 51%, #000000cf 100%); }
+    background: linear-gradient(to bottom right, #000000d4 0%, rgba(33, 21, 43, 0.82) 51%, #000000cf 100%);
+    background: -webkit-linear-gradient(-45deg, rgba(0, 0, 0, 0.849) 0%, rgba(33, 21, 43, 0.82) 51%, rgba(0, 0, 0, 0.795) 100%); }
 
 .flex {
   display: flex; }
@@ -56,6 +57,7 @@
   font-family: 'Lobster Two', cursive;
   color: #e7e7b5;
   background: radial-gradient(ellipse at top left, rgba(244, 239, 247, 0.96) 0%, rgba(30, 6, 129, 0.92) 52%, #410952c2 100%);
+  background: -ms-radial-gradient(top left, ellipse cover, rgba(244, 239, 247, 0.96) 0%, rgba(30, 6, 129, 0.92) 52%, rgba(65, 9, 82, 0.801) 100%);
   box-shadow: inset 0px 0px 10px 4px rgba(3, 8, 74, 0.84);
   text-shadow: #17171a 1px 1px 0; }
 
@@ -69,10 +71,10 @@
   background: linear-gradient(0deg, #106115 0%, #16a01a 50%, #053d07 100%); }
 
 .ticketHit {
-  background: linear-gradient(0deg, #10611596 0%, #16a01ba6 50%, #19d91f94 100%); }
+  background: linear-gradient(0deg, rgba(16, 97, 21, 0.63) 0%, rgba(22, 160, 27, 0.651) 50%, rgba(25, 217, 31, 0.658) 100%); }
 
 .ticketMissed {
-  background: linear-gradient(0deg, #84151573 0%, #9f0b1787 47%, rgba(255, 0, 0, 0.63) 100%); }
+  background: linear-gradient(0deg, rgba(132, 21, 21, 0.459) 0%, rgba(159, 11, 23, 0.616) 47%, rgba(255, 0, 0, 0.63) 100%); }
 
 .btn {
   align-self: center;
@@ -101,12 +103,16 @@
   .btn.help {
     font-size: 2em;
     grid-area: help;
-    text-shadow: 1px 1px #0000002b;
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.247);
     background: linear-gradient(to top, #30cfd0 0%, #330867 100%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     box-shadow: none; }
+  @supports (-ms-ime-align: auto) {
+    .btn.help {
+      -webkit-text-fill-color: unset;
+      color: #2d2d6d; } }
 
 .popup {
   justify-content: flex-start;
@@ -250,6 +256,7 @@ body {
         box-shadow: 0 0 16px 8px rgba(184, 182, 182, 0.2), 0 6px 20px 0 rgba(192, 185, 185, 0.541); }
       .mainHeader .switchWrapper .switch.dark {
         background: linear-gradient(to bottom right, #000000d4 0%, rgba(33, 21, 43, 0.82) 51%, #000000cf 100%);
+        background: -webkit-linear-gradient(-45deg, rgba(0, 0, 0, 0.849) 0%, rgba(33, 21, 43, 0.82) 51%, rgba(0, 0, 0, 0.795) 100%);
         border-radius: 30px 0px 0px 30px; }
       .mainHeader .switchWrapper .switch.light {
         background: rgba(255, 189, 0, 0.83);
@@ -273,16 +280,15 @@ body {
   grid-area: panel; }
   .panel .inputWrapper {
     align-items: center;
-    justify-content: space-evenly;
     background: linear-gradient(rgba(0, 0, 0, 0.287), rgba(0, 0, 0, 0.205)); }
     .panel .inputWrapper i {
-      font-size: 1.5rem; }
+      padding: 0 1vw; }
     .panel .inputWrapper input {
       background: transparent;
       color: #fff;
       border: none; }
     .panel .inputWrapper .panelInput {
-      width: 30%; }
+      width: 50%; }
     .panel .inputWrapper.wins {
       grid-area: win; }
       .panel .inputWrapper.wins .fa-hand-holding-usd {
@@ -293,7 +299,7 @@ body {
     .panel .inputWrapper.bets {
       grid-area: bets; }
       .panel .inputWrapper.bets .fa-donate {
-        background: linear-gradient(0deg, #841515e1 0%, #9f0b17e8 47%, rgba(255, 0, 0, 0.931) 100%);
+        background: linear-gradient(0deg, rgba(132, 21, 21, 0.856) 0%, rgba(159, 11, 23, 0.911) 47%, rgba(255, 0, 0, 0.931) 100%);
         background-clip: text;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent; }
@@ -361,11 +367,15 @@ body {
       width: 100%;
       font-weight: 900;
       border-top: 1px inset #3acfd5;
-      padding: 0.2rem 0.8rem; }
+      padding: 0.2rem 0;
+      text-shadow: #17171a 1px 1px 0; }
       .ticketsContainer .ticketsList .oneTicket .oneTicketNumbers {
         align-items: center;
         justify-content: flex-start;
         width: 100%; }
+      .ticketsContainer .ticketsList .oneTicket .bet {
+        color: #ffee00;
+        padding: 0 0.8rem; }
   .ticketsContainer .ticketNumber {
     width: 20px;
     height: 20px;
@@ -400,14 +410,18 @@ body {
     grid-template-rows: 12% 85%;
     height: 100%; }
     .ticketsContainer .ticketsList {
-      font-size: 2.5vh; }
-      .ticketsContainer .ticketsList .oneTicket {
-        padding: 0 0.8rem; }
+      font-size: 2.5vh;
+      /* 
+      .oneTicket {
+        padding: 0 0.8rem;
+      } */ }
     .ticketsContainer .ticketNumber {
       width: 24px;
       height: 24px; }
   .panel .inputWrapper input {
     font-size: 3vh; }
+  .panel .inputWrapper i {
+    font-size: 1.5rem; }
   .numberDiv {
     width: 40px;
     height: 40px; }
